@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+    # Servidor Node.js
+    node-server:
+        image: node:14 # Use a imagem oficial do Node.js
+        working_dir: /app
+        volumes:
+            - ./:/app # Mapeie a pasta do aplicativo local para a pasta do contêiner
+        ports:
+            - "3000:3000" # Mapeie a porta 3000 do host para a porta 3000 do contêiner
+        networks:
+            - geonetwork # Conecte este serviço à rede 'mynetwork'
+
+        command: "npm start" # Substitua com o comando correto para iniciar seu servidor Node.js
+    # PostGIS
+    postgis:
+        build:
+            dockerfile: Dockerfile-db
+            context: .
+            args:
+                - no-cache
+        env_file:
+            - ./.env
+        volumes:
+            - ./shapes:/shapes
+        networks:
+            - geonetwork # Conecte este serviço à rede 'mynetwork'
+        ports:
+            - "5432:5432" # Mapeie a porta 5432 do host para a porta 5432 do contêiner
+        # command: bash -c "/shapes/database.sh"
+networks:
+    geonetwork:
+    swagger:

@@ -1,0 +1,4 @@
+files/logradouros/*.*json filter=lfs diff=lfs merge=lfs -text
+files/lote_luos/*.*json filter=lfs diff=lfs merge=lfs -text
+shapes/lote_luos/lote_luos.dbf filter=lfs diff=lfs merge=lfs -text
+*.shp filter=lfs diff=lfs merge=lfs -text
