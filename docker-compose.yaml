@@ -13,6 +13,7 @@ services:
             - geonetwork # Conecte este serviço à rede 'mynetwork'
 
         command: "npm start" # Substitua com o comando correto para iniciar seu servidor Node.js
+        container_name: geotoaddress
     # PostGIS
     postgis:
         build:
@@ -29,6 +30,7 @@ services:
         ports:
             - "5432:5432" # Mapeie a porta 5432 do host para a porta 5432 do contêiner
         # command: bash -c "/shapes/database.sh"
+        container_name: geotoaddress-postgis
 networks:
     geonetwork:
     swagger:

@@ -22,6 +22,9 @@ Este é um serviço de reverse geocoding que permite obter informações de loca
     ```bash
     npm install
 
+3. Renomeie o arquivo *.env-example* para *.env*
+4. Caso necessário, redefina as variáveis de ambiente
+
 ## Uso
 
 ### Usando Docker
@@ -36,14 +39,9 @@ Use docker compose.
 2. Entre no container do PostGIS:
 
     ```bash
-    docker exec -it <nome-container-postgis> bash
+    docker exec -it geotoaddress-postgis bash -c shapes/database.sh
 
-3. Execute o bash que instalará as camadas:
-
-    ```bash
-    shapes/database.sh
-
-4. Aguarde o término da instalação
+3. Aguarde o término da instalação
 
 A documentação da API no Swagger estará disponível em <http://localhost:3000/api>.
 
